@@ -5,3 +5,4 @@ syntax: glob
 build/*
 docs/build/*
 dist/*
+hg_github.egg-info/*
