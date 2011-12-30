@@ -2,7 +2,7 @@
 # Mimic the hggit extension.
 try:
     from hggit import *
-    hggit_reposetup = repo_setup
+    hggit_reposetup = reposetup
 except ImportError:
     # Allow this module to be imported without
     # hg-git installed, eg for setup.py
@@ -19,14 +19,20 @@ def reposetup(ui, repo, **kwargs):
     """
     hggit_reposetup(ui, repo, **kwargs)
     bb = "ssh://hg@bitbucket.org/"
-    gh = "git+ssh://git@github.com/"
-    for name, path in ui.configitems("paths"):
+    for pathname, path in ui.configitems("paths"):
         if path.startswith(bb):
-            git_path = path.replace(bb, gh).rstrip("/") + ".git"
-            if name == "default":
-                ui.setconfig("paths", "github", git_path)
+            user, project = path.replace(bb, "").rstrip("/").split("/")
+            for k, v in ui.configitems("github"):
+                if k == "username":
+                    user = v
+            gh_path = "git+ssh://git@github.com/%s/%s.git" % (user, project)
+            if pathname == "default":
                 if "master" not in repo._bookmarks:
                     from mercurial.commands import bookmark
                     bookmark(ui, repo, mark="master", rev="default")
+                gh_pathname = "github"
             else:
-                ui.setconfig("paths", "github-" + name, git_path)
+                gh_pathname = "github-" + pathname
+            ui.setconfig("paths", gh_pathname, gh_path)
+
+
