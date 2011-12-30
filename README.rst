@@ -1,5 +1,5 @@
-Introduction
-============
+hg-github
+=========
 
 hg-github is a `Mercurial`_ extension that wraps `hg-git`_, and
 supports a work-flow where repositories are hosted on `Bitbucket`_
@@ -49,8 +49,8 @@ Repository Paths
 As mentioned above, the GitHub path is given the name ``github`` when
 the default remote location is on Bitbucket. For other named Bitbucket
 locations, the name ``github-NAME`` is given, where ``NAME`` is the
-named path located on BitBucket. For example consider the following
-``.hg/hgrc`` repo config::
+name of the path located on BitBucket. For example consider the
+following ``.hg/hgrc`` repo config::
 
     [paths]
     default = ssh://hg@bitbucket.org/stephenmcd/hg-git
