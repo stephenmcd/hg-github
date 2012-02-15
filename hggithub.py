@@ -21,7 +21,10 @@ def reposetup(ui, repo, **kwargs):
     bb = "ssh://hg@bitbucket.org/"
     for pathname, path in ui.configitems("paths"):
         if path.startswith(bb):
-            user, project = path.replace(bb, "").rstrip("/").split("/")
+            user, project = path.replace(bb, "").split("/", 1)
+            # Strip slash and everything after it,
+            # such as mq patch queue path.
+            project = project.split("/")[0]
             for k, v in ui.configitems("github"):
                 if k == "username":
                     user = v
