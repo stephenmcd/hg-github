@@ -17,6 +17,8 @@ def reposetup(ui, repo, **kwargs):
     Automatically adds Bitbucket->GitHub mirror paths to the repo.
     Also creates a `master` bookmark for the `default` branch.
     """
+    if len(getattr(repo, "changelog", [])) == 0:
+        return
     hggit_reposetup(ui, repo, **kwargs)
     bb = "ssh://hg@bitbucket.org/"
     for pathname, path in ui.configitems("paths"):
