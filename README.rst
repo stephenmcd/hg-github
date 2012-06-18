@@ -1,6 +1,8 @@
 hg-github
 =========
 
+Created by `Stephen McDonald <http://twitter.com/stephen_mcd>`_
+
 hg-github is a `Mercurial`_ extension that wraps `hg-git`_, and
 supports a work-flow where repositories are hosted on `Bitbucket`_
 and mirrored on `GitHub`_. This work-flow normally requires adding
