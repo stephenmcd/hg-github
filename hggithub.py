@@ -34,7 +34,7 @@ def reposetup(ui, repo, **kwargs):
             if pathname == "default":
                 if "master" not in repo._bookmarks:
                     from mercurial.commands import bookmark
-                    bookmark(ui, repo, mark="master", rev="default")
+                    bookmark(ui, repo, "master", rev="default")
                 gh_pathname = "github"
             else:
                 gh_pathname = "github-" + pathname
