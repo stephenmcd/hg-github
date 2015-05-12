@@ -11,7 +11,7 @@ setup(
     long_description = open("README.rst").read(),
     url = "http://github.com/stephenmcd/hg-github",
     py_modules=["hggithub",],
-    install_requires=["hg-git", "sphinx-me"],
+    install_requires=["hg-git", "mercurial", "sphinx-me"],
     zip_safe = False,
     license="BSD",
     classifiers = [
